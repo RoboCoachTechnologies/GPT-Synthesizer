@@ -8,6 +8,39 @@ from gpt_synthesizer.generate_code import code_generator
 
 import gpt_synthesizer.ui as ui
 
+import sys
+import logging
+import os
+
+# Open the file in write mode
+if not os.path.exists('../workspace'):
+        os.mkdir(f'../workspace')
+
+with open('../workspace/terminal_log.log', 'w') as file:
+    pass  # This will effectively erase the contents of the file
+
+logging.basicConfig(
+    filename='../workspace/terminal_log.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# Define a custom stream handler to capture console output
+class ConsoleAndFileHandler(logging.StreamHandler):
+    def __init__(self, stream=None):
+        super().__init__(stream)
+    
+    def emit(self, record):
+        super().emit(record)
+        self.stream.flush()  # Flush the stream to capture the output immediately
+
+# Create an instance of the custom handler
+console_handler = ConsoleAndFileHandler(sys.stdout)
+
+# Add the custom handler to the logger
+logger = logging.getLogger()
+logger.addHandler(console_handler)
+
 
 def main(verbose = False):
     llm = llm_init()
@@ -20,9 +53,13 @@ def main(verbose = False):
     )
 
     print(ui.WELCOME_MSG)
+    logging.info(ui.WELCOME_MSG)
 
     task_message = input("Programming task: ")  # User-specified task
+    logging.info(f"User-specified task: {task_message}")
+
     lang_message = input("Programming language: ")  # User-specified language
+    logging.info(f"User-specified language: {lang_message}")
 
     comp_output = comp_chain.predict(input=task_message, lang=lang_message)
     comp_list = comp_parser.parse(comp_output).components
@@ -30,28 +67,42 @@ def main(verbose = False):
     comp_list_str = make_comp_list(comp_list)
 
     print(ui.COMP_MSG_INIT)
+    logging.info(ui.COMP_MSG_INIT)
+
     print(comp_list_str)
+    logging.info(comp_list_str)
+
     print(ui.COMP_MSG_ADD)
+    logging.info(ui.COMP_MSG_ADD)
 
     add_comp_message = input("Components to be added: ")
+    logging.info(f"User-specified components to be added: {add_comp_message}")
 
     if len(add_comp_message) == 0:
         print(ui.COMP_MSG_UPDATE_NO_ADD)
+        logging.info(ui.COMP_MSG_UPDATE_NO_ADD)
     else:
         comp_list = extend_comp_list(comp_list, add_comp_message)
         comp_list_str = make_comp_list(comp_list)
         print(ui.COMP_MSG_UPDATE_ADD)
+        logging.info(ui.COMP_MSG_UPDATE_ADD)
         print(comp_list_str)
+        logging.info(comp_list_str)
 
     print(ui.COMP_MSG_RM)
+    logging.info(ui.COMP_MSG_RM)
 
     rm_comp_message = input("Components to be removed: ")
+    logging.info(f"User-specified components to be removed: {rm_comp_message}")
     comp_list = remove_comp_list(comp_list, rm_comp_message)
     comp_list_str = make_comp_list(comp_list)
 
     print(ui.COMP_MSG_FINAL_1)
+    logging.info(ui.COMP_MSG_FINAL_1)
     print(comp_list_str)
+    logging.info(comp_list_str)
     print(ui.COMP_MSG_FINAL_2)
+    logging.info(ui.COMP_MSG_FINAL_2)
 
     all_comps_1 = """"""
     all_comps_2_spec = """"""
@@ -72,13 +123,17 @@ def main(verbose = False):
         spec_output = spec_chain.predict(input=init_human_input)
 
         print(ui.SPEC_MSG_TITLE.format(comp=comp))
+        logging.info(ui.SPEC_MSG_TITLE.format(comp=comp))
         print(spec_output)
+        logging.info(spec_output)
 
         while spec_end_str not in spec_output:
             human_response = input("Answer: ")
+            logging.info(f"User-specified answer: {human_response}")
             spec_output = spec_chain.predict(input=human_response)
             spec_output_clean = spec_output.replace(spec_end_str, "")
             print(spec_output_clean)
+            logging.info(spec_output_clean)
 
         sum_prompt = get_summarize_prompt()
         summary_chain = LLMChain(
@@ -111,6 +166,9 @@ def main(verbose = False):
                                                                               all_comps_2_func_list)
 
     print(ui.FAREWELL_MSG)
+    logging.info(ui.FAREWELL_MSG)
+    logging.shutdown()
+
 
 
 if __name__ == "__main__":

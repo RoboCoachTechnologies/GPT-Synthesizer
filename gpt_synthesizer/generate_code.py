@@ -1,4 +1,28 @@
 import os
+import sys
+import logging
+
+# logging.basicConfig(
+#     filename='../workspace/terminal_log.log',
+#     level=logging.INFO,
+#     format='%(asctime)s - %(levelname)s - %(message)s'
+# )
+
+# # Define a custom stream handler to capture console output
+# class ConsoleAndFileHandler(logging.StreamHandler):
+#     def __init__(self, stream=None):
+#         super().__init__(stream)
+    
+#     def emit(self, record):
+#         super().emit(record)
+#         self.stream.flush()  # Flush the stream to capture the output immediately
+
+# # Create an instance of the custom handler
+# console_handler = ConsoleAndFileHandler(sys.stdout)
+
+# # Add the custom handler to the logger
+# logger = logging.getLogger()
+# logger.addHandler(console_handler)
 
 from langchain.chains import LLMChain
 
@@ -22,9 +46,6 @@ def code_generator(task, lang, curr_comp, curr_comp_desc, func_list, summary, ll
     chat_key = "all_output.txt"
     workspace = to_files(gen_code_output, chat_key)
 
-    if not os.path.exists('../workspace'):
-        os.mkdir(f'../workspace')
-
     for filename in workspace.keys():
         if filename == chat_key:
             continue
@@ -38,6 +59,7 @@ def code_generator(task, lang, curr_comp, curr_comp_desc, func_list, summary, ll
             file.write(code)
 
     print(GEN_CODE_MSG.format(comp=curr_comp))
+    logging.info(GEN_CODE_MSG.format(comp=curr_comp))
 
 
 def to_files(chat, chat_key):
