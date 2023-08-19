@@ -52,6 +52,10 @@ GEN_CODE_MSG = """
 I finished implementation for {comp}. You can find it in the 'workspace' directory.
 """
 
+GEN_MAIN_MSG = """
+I finished implementation the 'main' file. You can find it in the 'workspace' directory.
+"""
+
 FAREWELL_MSG = """
 It seems like we have implemented all the components. Farewell my friend!
 """

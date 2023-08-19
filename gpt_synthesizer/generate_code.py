@@ -1,28 +1,4 @@
-import os
-import sys
 import logging
-
-# logging.basicConfig(
-#     filename='../workspace/terminal_log.log',
-#     level=logging.INFO,
-#     format='%(asctime)s - %(levelname)s - %(message)s'
-# )
-
-# # Define a custom stream handler to capture console output
-# class ConsoleAndFileHandler(logging.StreamHandler):
-#     def __init__(self, stream=None):
-#         super().__init__(stream)
-    
-#     def emit(self, record):
-#         super().emit(record)
-#         self.stream.flush()  # Flush the stream to capture the output immediately
-
-# # Create an instance of the custom handler
-# console_handler = ConsoleAndFileHandler(sys.stdout)
-
-# # Add the custom handler to the logger
-# logger = logging.getLogger()
-# logger.addHandler(console_handler)
 
 from langchain.chains import LLMChain
 

@@ -27,7 +27,9 @@ console_handler = ConsoleAndFileHandler(sys.stdout)
 
 # Add the custom handler to the logger
 logger = logging.getLogger()
+logger.propagate = False
 logger.addHandler(console_handler)
+# logger.propagate = False
 
 # Log any input and output from the terminal
 while True:

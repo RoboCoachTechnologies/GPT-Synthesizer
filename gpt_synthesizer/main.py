@@ -5,6 +5,7 @@ from gpt_synthesizer.model import llm_init
 from gpt_synthesizer.prompt import get_comp_prompt, get_qa_prompt, get_summarize_prompt, get_generate_func_list_prompt
 from gpt_synthesizer.parser import make_comp_list, extend_comp_list, remove_comp_list, make_func_list
 from gpt_synthesizer.generate_code import code_generator
+from generate_main import main_generator
 
 import gpt_synthesizer.ui as ui
 
@@ -25,21 +26,21 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-# Define a custom stream handler to capture console output
-class ConsoleAndFileHandler(logging.StreamHandler):
-    def __init__(self, stream=None):
-        super().__init__(stream)
+# # Define a custom stream handler to capture console output
+# class ConsoleAndFileHandler(logging.StreamHandler):
+#     def __init__(self, stream=None):
+#         super().__init__(stream)
     
-    def emit(self, record):
-        super().emit(record)
-        self.stream.flush()  # Flush the stream to capture the output immediately
+#     def emit(self, record):
+#         super().emit(record)
+#         self.stream.flush()  # Flush the stream to capture the output immediately
 
-# Create an instance of the custom handler
-console_handler = ConsoleAndFileHandler(sys.stdout)
+# # Create an instance of the custom handler
+# console_handler = ConsoleAndFileHandler(sys.stdout)
 
-# Add the custom handler to the logger
-logger = logging.getLogger()
-logger.addHandler(console_handler)
+# # Add the custom handler to the logger
+# logger = logging.getLogger()
+# logger.addHandler(console_handler)
 
 
 def main(verbose = False):
@@ -107,6 +108,8 @@ def main(verbose = False):
     all_comps_1 = """"""
     all_comps_2_spec = """"""
     all_comps_2_func_list = """"""
+
+    all_summary = ""
     for comp in comp_list.keys():
         spec_prompt, spec_end_str = get_qa_prompt(
             task=task_message, lang=lang_message,
@@ -144,6 +147,7 @@ def main(verbose = False):
 
         spec_memory.return_messages = True
         sum_output = summary_chain.predict(input=spec_memory.load_memory_variables({}))
+        all_summary += sum_output
 
         generate_func_list_prompt = get_generate_func_list_prompt(comp, comp_list[comp],
                                                                   all_comps_1, all_comps_2_func_list)
@@ -158,12 +162,15 @@ def main(verbose = False):
 
         code_generator(task_message, lang_message, comp, comp_list[comp],
                        generate_func_list_output, sum_output, llm, verbose)
+        
 
         all_comps_1, all_comps_2_spec, all_comps_2_func_list = make_func_list(comp, comp_list[comp],
                                                                               generate_func_list_output,
                                                                               all_comps_1,
                                                                               all_comps_2_spec,
                                                                               all_comps_2_func_list)
+
+    main_generator(task_message, lang_message, comp_list, sum_output, llm, verbose)
 
     print(ui.FAREWELL_MSG)
     logging.info(ui.FAREWELL_MSG)
