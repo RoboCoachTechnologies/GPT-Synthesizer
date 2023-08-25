@@ -1,3 +1,6 @@
+import logging
+import os
+
 from langchain.chains import ConversationChain, LLMChain
 from langchain.memory import ConversationBufferMemory
 
@@ -5,45 +8,24 @@ from gpt_synthesizer.model import llm_init
 from gpt_synthesizer.prompt import get_comp_prompt, get_qa_prompt, get_summarize_prompt, get_generate_func_list_prompt
 from gpt_synthesizer.parser import make_comp_list, extend_comp_list, remove_comp_list, make_func_list
 from gpt_synthesizer.generate_code import code_generator
-from generate_main import main_generator
-
+from gpt_synthesizer.generate_main import main_generator
 import gpt_synthesizer.ui as ui
-
-import sys
-import logging
-import os
-
-# Open the file in write mode
-if not os.path.exists('../workspace'):
-        os.mkdir(f'../workspace')
-
-with open('../workspace/terminal_log.log', 'w') as file:
-    pass  # This will effectively erase the contents of the file
-
-logging.basicConfig(
-    filename='../workspace/terminal_log.log',
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-
-# # Define a custom stream handler to capture console output
-# class ConsoleAndFileHandler(logging.StreamHandler):
-#     def __init__(self, stream=None):
-#         super().__init__(stream)
-    
-#     def emit(self, record):
-#         super().emit(record)
-#         self.stream.flush()  # Flush the stream to capture the output immediately
-
-# # Create an instance of the custom handler
-# console_handler = ConsoleAndFileHandler(sys.stdout)
-
-# # Add the custom handler to the logger
-# logger = logging.getLogger()
-# logger.addHandler(console_handler)
 
 
 def main(verbose = False):
+    # Open the file in write mode
+    if not os.path.exists('workspace'):
+            os.mkdir(f'workspace')
+
+    with open('workspace/terminal_log.log', 'w') as file:
+        pass  # This will effectively erase the contents of the file
+
+    logging.basicConfig(
+        filename='workspace/terminal_log.log',
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
+
     llm = llm_init()
 
     comp_prompt, comp_parser = get_comp_prompt()
@@ -57,10 +39,10 @@ def main(verbose = False):
     logging.info(ui.WELCOME_MSG)
 
     task_message = input("Programming task: ")  # User-specified task
-    logging.info(f"User-specified task: {task_message}")
+    logging.info(f"Programming task: {task_message}")
 
     lang_message = input("Programming language: ")  # User-specified language
-    logging.info(f"User-specified language: {lang_message}")
+    logging.info(f"Programming language: {lang_message}")
 
     comp_output = comp_chain.predict(input=task_message, lang=lang_message)
     comp_list = comp_parser.parse(comp_output).components
@@ -77,7 +59,7 @@ def main(verbose = False):
     logging.info(ui.COMP_MSG_ADD)
 
     add_comp_message = input("Components to be added: ")
-    logging.info(f"User-specified components to be added: {add_comp_message}")
+    logging.info(f"Components to be added: {add_comp_message}")
 
     if len(add_comp_message) == 0:
         print(ui.COMP_MSG_UPDATE_NO_ADD)
@@ -94,7 +76,7 @@ def main(verbose = False):
     logging.info(ui.COMP_MSG_RM)
 
     rm_comp_message = input("Components to be removed: ")
-    logging.info(f"User-specified components to be removed: {rm_comp_message}")
+    logging.info(f"Components to be removed: {rm_comp_message}")
     comp_list = remove_comp_list(comp_list, rm_comp_message)
     comp_list_str = make_comp_list(comp_list)
 
@@ -132,7 +114,7 @@ def main(verbose = False):
 
         while spec_end_str not in spec_output:
             human_response = input("Answer: ")
-            logging.info(f"User-specified answer: {human_response}")
+            logging.info(f"Answer: {human_response}")
             spec_output = spec_chain.predict(input=human_response)
             spec_output_clean = spec_output.replace(spec_end_str, "")
             print(spec_output_clean)
@@ -170,7 +152,9 @@ def main(verbose = False):
                                                                               all_comps_2_spec,
                                                                               all_comps_2_func_list)
 
-    main_generator(task_message, lang_message, comp_list, sum_output, llm, verbose)
+    # Currenty implemented main generation for Python code
+    if lang_message.lower().__contains__('python'):
+        main_generator(task_message, lang_message, comp_list, all_summary, llm, verbose)
 
     print(ui.FAREWELL_MSG)
     logging.info(ui.FAREWELL_MSG)

@@ -2,11 +2,6 @@ import os
 
 from langchain.chat_models import ChatOpenAI
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
-
 def llm_init(model_name="gpt-3.5-turbo-16k",
              temperature=0.2,
              max_tokens=10000,

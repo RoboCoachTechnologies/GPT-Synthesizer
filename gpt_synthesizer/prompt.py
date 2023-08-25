@@ -1,5 +1,6 @@
 from langchain.prompts.prompt import PromptTemplate
-from gpt_synthesizer.parser import get_comp_parser, get_func_list_parser, get_func_desc_parser
+
+from gpt_synthesizer.parser import get_comp_parser
 
 
 def get_comp_prompt():
@@ -157,9 +158,9 @@ def get_generate_code_prompt():
 
 def get_generate_main_prompt():
     template = '''
-    You are an advanced software programmer AI that implements a main file give a specific task, a programming language, a list of all the components involved in the implementation of the task, and the code for each component.
+    You are an advanced software programmer AI that implements a main file given a specific task, a programming language, a list of all the components involved in the implementation of the task, and the code for each component.
 
-    User's task: '{task}' 
+    User's task: {task} 
     Programming language: {language}
 
     All the components involved in the creation of the user's task and their implementations are provided below.
@@ -170,8 +171,7 @@ def get_generate_main_prompt():
 
     The components are purely listed for context. Your sole focus is implementing a main file that integrates all the components above and runs a demo of the task and nothing else. 
 
-    For additional information, here is a summary of a conversation between the user and another AI to further clarify how the user would
-    like the code to be implemented. 
+    For additional information, here is a summary of a conversation between the user and another AI to further clarify how the user would like the code to be implemented. 
 
     Summary:
     {summary}

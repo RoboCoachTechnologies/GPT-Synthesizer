@@ -20,7 +20,20 @@ def code_generator(task, lang, curr_comp, curr_comp_desc, func_list, summary, ll
                                              func_list=func_list, summary=summary)
 
     chat_key = "all_output.txt"
-    workspace = to_files(gen_code_output, chat_key)
+    to_files(gen_code_output, chat_key, curr_comp)
+
+    print(GEN_CODE_MSG.format(comp=curr_comp))
+    logging.info(GEN_CODE_MSG.format(comp=curr_comp))
+
+
+def to_files(chat, chat_key, curr_comp):
+    workspace = dict()
+
+    workspace[chat_key] = chat
+
+    files = get_code_from_chat(chat)
+    for file_name, code in files:
+        workspace[file_name] = code
 
     for filename in workspace.keys():
         if filename == chat_key:
@@ -31,20 +44,5 @@ def code_generator(task, lang, curr_comp, curr_comp_desc, func_list, summary, ll
         if filename == 'README.md':
             filename = curr_comp + ' README.md'
 
-        with open('../workspace/' + filename, 'w') as file:
+        with open('workspace/' + filename, 'w') as file:
             file.write(code)
-
-    print(GEN_CODE_MSG.format(comp=curr_comp))
-    logging.info(GEN_CODE_MSG.format(comp=curr_comp))
-
-
-def to_files(chat, chat_key):
-    workspace = dict()
-
-    workspace[chat_key] = chat
-
-    files = get_code_from_chat(chat)
-    for file_name, code in files:
-        workspace[file_name] = code
-
-    return workspace
