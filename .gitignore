@@ -157,4 +157,4 @@ cython_debug/
 .idea/
 
 # Generated code
-gpt_synthesizer/workspace/
+workspace/*
