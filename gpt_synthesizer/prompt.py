@@ -1,5 +1,6 @@
 from langchain.prompts.prompt import PromptTemplate
-from gpt_synthesizer.parser import get_comp_parser, get_func_list_parser, get_func_desc_parser
+
+from gpt_synthesizer.parser import get_comp_parser
 
 
 def get_comp_prompt():
@@ -153,3 +154,43 @@ def get_generate_code_prompt():
         Before you finish, double check that your implementation satisfies all of the specifications mentioned in the above summary."""
     return PromptTemplate(template=template,
                           input_variables=["task", "lang", "curr_comp", "curr_comp_desc", "func_list", "summary"])
+
+
+def get_generate_main_prompt():
+    template = '''
+    You are an advanced software programmer AI that implements a main file given a specific task, a programming language, a list of all the components involved in the implementation of the task, and the code for each component.
+
+    User's task: {task} 
+    Programming language: {language}
+
+    All the components involved in the creation of the user's task and their implementations are provided below.
+
+    {component_list}
+
+    {total_contents}
+
+    The components are purely listed for context. Your sole focus is implementing a main file that integrates all the components above and runs a demo of the task and nothing else. 
+
+    For additional information, here is a summary of a conversation between the user and another AI to further clarify how the user would like the code to be implemented. 
+
+    Summary:
+    {summary}
+
+    Implement the code for the main file in {language}. Make sure that you fully implement everything that is necessary for the code to work.
+    Think step by step and reason yourself to the right decisions to make sure we get it right.
+    Output the implementation of the main file strictly in the following format.
+
+    FILENAME
+    ```LANGUAGE
+    CODE
+    ```
+
+    Where 'CODE' is your implementation, 'FILENAME' is 'main' formatted to a valid file name, and 'LANGUAGE' is {language}. 
+
+    Please note that the code should be fully functional. No placeholders.
+    Ensure to implement all code, if you are unsure, write a plausible implementation.
+
+'''
+
+    ### Feed summary to model and have it generate the code.
+    return PromptTemplate(template=template, input_variables=['task', 'language', 'component_list', 'summary', 'total_contents'])
