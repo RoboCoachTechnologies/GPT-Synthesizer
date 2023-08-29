@@ -157,4 +157,4 @@ cython_debug/
 .idea/
 
 # Generated code
-workspace/*
+workspace/
