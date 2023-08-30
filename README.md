@@ -60,3 +60,8 @@ Here is a (non-exhaustive) list of our future plans for GPT Synthesizer:
 - An additional step in code generation that ensures creating a main/entrypoint.
 - Creating setup instructions based on the programming language, e.g. `CMakelists.txt` for C++ and `setup.py`+`requirements.txt` for python.
 - Adding benchmarks and testing scripts.
+
+## Contact
+
+For business inquiries, such as consulting or contracting jobs, please contact robocoachtechnologies@gmail.com. 
+
