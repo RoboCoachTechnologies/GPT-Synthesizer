@@ -23,7 +23,10 @@ Different users might prefer different levels of interactivity depending on thei
 
 ## Usage
 
-GPT Sythesizer is easy to use. It provides you with an intuitive AI assistant in your command-line interface. See our [demo](https://www.youtube.com/watch?v=zFJDQOtIFGA) for an example of using GPT Synthesizer.
+GPT Sythesizer is easy to use. It provides you with an intuitive AI assistant in your command-line interface. Watch these demos to see how GPT Synthesizer works:
+- [GPT-Synthesizer Release v0.0.2 demo: a snake game](https://www.youtube.com/watch?v=zFJDQOtIFGA)
+- [GPT-Synthesizer Release v0.0.3 demo: a tic-tac-toe game](https://www.youtube.com/watch?v=_JdmzpXLyE0)
+
 
 GPT Synthesizer uses OpenAI's `gpt-3.5-turbo-16k` as the default LLM.
 
