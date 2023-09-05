@@ -18,7 +18,7 @@ Different users might prefer different levels of interactivity depending on thei
 
 - For development:
   - `git clone https://github.com/RoboCoachTechnologies/GPT-Synthesizer.git`
-  - `cd gpt-synthesizer`
+  - `cd GPT-Synthesizer`
   - `pip install -e .`
 
 ## Usage
