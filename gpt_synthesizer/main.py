@@ -78,7 +78,6 @@ def main(verbose = False):
 
     # TODO: REMOVE THIS LINE BEFORE COMMITTING
     print("I overwrote the API key with a hard coded one")
-    openai_api_key = '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'
 
 
     print("making key an environment variable and session state variable")
