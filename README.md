@@ -23,7 +23,7 @@ Different users might prefer different levels of interactivity depending on thei
 
 ## Usage
 
-GPT Sythesizer is easy to use. It provides you with an intuitive AI assistant in your command-line interface. Watch these demos to see how GPT Synthesizer works:
+GPT Synthesizer is easy to use. It provides you with an intuitive AI assistant in your command-line interface. It also provides an intuitive user interface using Streamlit. Watch these demos to see how GPT Synthesizer works:
 - [GPT-Synthesizer Release v0.0.2 demo: a snake game](https://www.youtube.com/watch?v=zFJDQOtIFGA)
 - [GPT-Synthesizer Release v0.0.3 demo: a tic-tac-toe game](https://www.youtube.com/watch?v=_JdmzpXLyE0)
 - [GPT-Synthesizer short demo: how to install](https://www.youtube.com/watch?v=D_kdzOUTe0E)
@@ -34,7 +34,7 @@ GPT Synthesizer uses OpenAI's `gpt-3.5-turbo-16k` as the default LLM.
 
 - Setup your OpenAI API key: `export OPENAI_API_KEY=[your api key]`
 
-**Run**:
+**Run Terminal**:
 
 - Start GPT Synthesizer by typing `gpt-synthesizer` in the terminal.
 - Briefly describe your programming task and the implementation language:
@@ -43,9 +43,24 @@ GPT Synthesizer uses OpenAI's `gpt-3.5-turbo-16k` as the default LLM.
 - GPT Synthesizer will analyze your task and suggest a set of components needed for the implementation.
   - You can add more components by listing them in quotation marks: `Components to be added: *Add 'component 1: what component 1 does', 'component 2: what component 2 does', and 'component 3: what component 3 does' to the list of components.*`
   - You can remove any redundant component in a similar manner: `Components to be removed: *Remove 'component 1' and 'component 2' from the list of components.*`
-- After you are done with modifying the component list, GPT Synthsizer will start asking questions in order to find all the details needed for implementing each component.
+- After you are done with modifying the component list, GPT Synthesizer will start asking questions in order to find all the details needed for implementing each component.
 - When GPT Synthesizer learns about your specific requirements for each component, it will write the code for you!
 - You can find the implementation in the `workspace` directory.
+
+**Run Streamlit App**:
+
+- Start GPT Synthesizer by typing `gpt-synthesizer-streamlit` in the terminal.
+- Input your OpenAI API key in the side bar
+- Select the model you wish to use in the side bar
+- Briefly describe your programming task and the implementation language:
+  - `Programming task: *I want to implement an edge detection method from live camera feed.*`
+  - `Programming language: *python*`
+- GPT Synthesizer will analyze your task and suggest a set of components needed for the implementation.
+  - You can add more components by listing them in quotation marks: `Components to be added: *Add 'component 1: what component 1 does', 'component 2: what component 2 does', and 'component 3: what component 3 does' to the list of components.*`
+  - You can remove any redundant component in a similar manner: `Components to be removed: *Remove 'component 1' and 'component 2' from the list of components.*`
+- After you are done with modifying the component list, GPT Synthesizer will start asking questions in order to find all the details needed for implementing each component.
+- When GPT Synthesizer learns about your specific requirements for each component, it will write the code for you!
+- You can find the implementation in the `workspace` directory. For transparency, the UI will put the path and the content of the `workspace` in the side bar.
 
 ## Make your own GPT Synthesizer!
 
