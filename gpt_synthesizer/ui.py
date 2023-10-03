@@ -1,3 +1,9 @@
+import html
+import re
+
+import streamlit as st
+
+
 WELCOME_MSG = """
 Welcome! I am here to assist you with your programming task.
 
@@ -60,13 +66,6 @@ FAREWELL_MSG = """
 It seems like we have implemented all the components. Farewell my friend!
 """
 
-###############################################################################################
-import html
-import re
-
-import streamlit as st
-from langchain.callbacks.base import BaseCallbackHandler
-
 
 def format_message(text):
     """
@@ -103,12 +102,11 @@ def print_user(text):
             </div>
             """,
         unsafe_allow_html=True,
-    )
+        )
 
 
 def print_bot(text):
     avatar_url = 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortFlat&accessoriesType=Wayfarers&hairColor=BrownDark&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Black&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Pale'
-    #avatar_url = 'https://new.express.adobe.com/tools/animate-from-audio?afaBackgroundId=BG_Citypark.jpg&afaBackgroundCategory=all&afaSize=InstagramSquare&afaPuppetId=Robot+VQA.puppet&afaPuppetCategory=all&afaPuppetScale=1&afaPuppetOffset=0%2C0'
     message_alignment = "flex-start"
     message_bg_color = "#EEEEEE"
     avatar_class = "bot-avatar"
