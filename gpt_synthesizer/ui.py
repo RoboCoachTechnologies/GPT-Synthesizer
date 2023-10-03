@@ -89,9 +89,9 @@ def format_message(text):
     return formatted_text
 
 def print_user(text):
-    avatar_url = "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads02&accessoriesType=Prescription01&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=PastelYellow&eyeType=WinkWacky&eyebrowType=RaisedExcited&mouthType=ScreamOpen&skinColor=Light"
+    avatar_url = "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShaggyMullet&accessoriesType=Prescription02&hairColor=Red&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Red&eyeType=Default&eyebrowType=SadConcernedNatural&mouthType=Serious&skinColor=Pale"
     message_alignment = "flex-end"
-    message_bg_color = "#29D693"
+    message_bg_color = "linear-gradient(135deg, #00B2FF 0%, #006AFF 100%)"
     avatar_class = "user-avatar"
     st.write(
         f"""
@@ -108,7 +108,7 @@ def print_bot(text):
     avatar_url = 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortFlat&accessoriesType=Wayfarers&hairColor=BrownDark&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Black&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Pale'
     #avatar_url = 'https://new.express.adobe.com/tools/animate-from-audio?afaBackgroundId=BG_Citypark.jpg&afaBackgroundCategory=all&afaSize=InstagramSquare&afaPuppetId=Robot+VQA.puppet&afaPuppetCategory=all&afaPuppetScale=1&afaPuppetOffset=0%2C0'
     message_alignment = "flex-start"
-    message_bg_color = "#D6296C"
+    message_bg_color = "#EEEEEE"
     avatar_class = "bot-avatar"
 
     
@@ -118,7 +118,7 @@ def print_bot(text):
         f"""
             <div style="display: flex; align-items: center; margin-bottom: 10px; justify-content: {message_alignment};">
                 <img src="{avatar_url}" class="{avatar_class}" alt="avatar" style="width: 50px; height: 50px;" />
-                <div style="background: {message_bg_color}; color: white; border-radius: 20px; padding: 10px; margin-right: 5px; max-width: 75%; font-size: 14px;">
+                <div style="background: {message_bg_color}; color: black; border-radius: 20px; padding: 10px; margin-right: 5px; max-width: 75%; font-size: 14px;">
                     {text} \n </div>
             </div>
             """,
