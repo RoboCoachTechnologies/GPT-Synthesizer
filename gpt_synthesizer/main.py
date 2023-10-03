@@ -9,10 +9,10 @@ from langchain.memory import ConversationBufferMemory
 from gpt_synthesizer.model import llm_init
 from gpt_synthesizer.prompt import get_comp_prompt, get_qa_prompt, get_summarize_prompt, get_generate_func_list_prompt
 from gpt_synthesizer.parser import make_comp_list, extend_comp_list, remove_comp_list, make_func_list
-from generate_code import code_generator
-from generate_main import main_generator
-import ui
-from ui import print_bot, print_user, GEN_CODE_MSG
+from gpt_synthesizer.generate_code import code_generator
+from gpt_synthesizer.generate_main import main_generator
+import gpt_synthesizer.ui as ui
+from gpt_synthesizer.ui import print_bot, print_user, GEN_CODE_MSG
 
 program_options = ['Python', 'C++', 'Java', 'Swift', 'Other', '']
 model_options = [':rainbow[GPT-3.5]', 'GPT-4']
