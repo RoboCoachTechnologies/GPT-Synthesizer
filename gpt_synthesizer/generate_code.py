@@ -5,7 +5,7 @@ from langchain.chains import LLMChain
 from gpt_synthesizer.prompt import get_generate_code_prompt
 from gpt_synthesizer.parser import get_code_from_chat
 from gpt_synthesizer.ui import GEN_CODE_MSG
-from ui import print_bot
+from gpt_synthesizer.ui import print_bot
 
 
 def code_generator(task, lang, curr_comp, curr_comp_desc, func_list, summary, llm, verbose=False):

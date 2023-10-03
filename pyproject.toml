@@ -21,7 +21,8 @@ classifiers = [
 ]
 keywords = ["Large Language Models", "AI-assisted Code Generation"]
 dependencies = [
-    "langchain[openai]"
+    "langchain[openai]",
+    "streamlit"
 ]
 requires-python = ">=3.8"
 

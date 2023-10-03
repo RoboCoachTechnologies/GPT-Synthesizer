@@ -88,6 +88,7 @@ def format_message(text):
 
     return formatted_text
 
+
 def print_user(text):
     avatar_url = "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads02&accessoriesType=Prescription01&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=PastelYellow&eyeType=WinkWacky&eyebrowType=RaisedExcited&mouthType=ScreamOpen&skinColor=Light"
     message_alignment = "flex-end"
@@ -103,6 +104,7 @@ def print_user(text):
             """,
         unsafe_allow_html=True,
     )
+
 
 def print_bot(text):
     avatar_url = 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortFlat&accessoriesType=Wayfarers&hairColor=BrownDark&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Black&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Pale'

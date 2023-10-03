@@ -6,7 +6,7 @@ from langchain.chains import LLMChain
 from gpt_synthesizer.prompt import get_generate_main_prompt
 from gpt_synthesizer.ui import GEN_MAIN_MSG
 from gpt_synthesizer.generate_code import to_files
-from ui import print_bot
+from gpt_synthesizer.ui import print_bot
 
 def main_generator(task, language, component_list, summary, llm, verbose=False):
     # Get the contents of the workspace
