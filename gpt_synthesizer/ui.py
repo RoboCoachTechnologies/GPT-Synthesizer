@@ -124,14 +124,3 @@ def print_bot(text):
             """,
         unsafe_allow_html=True,
     )
-
-    
-
-
-
-
-
-
-
-
-
