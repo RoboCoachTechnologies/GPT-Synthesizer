@@ -61,6 +61,9 @@ def main(verbose = False):
     add_comp_message = input("Components to be added: ")
     logging.info(f"Components to be added: {add_comp_message}")
 
+    if add_comp_message.lower().__contains__('none'):
+        add_comp_message = ""
+        
     if len(add_comp_message) == 0:
         print(ui.COMP_MSG_UPDATE_NO_ADD)
         logging.info(ui.COMP_MSG_UPDATE_NO_ADD)
