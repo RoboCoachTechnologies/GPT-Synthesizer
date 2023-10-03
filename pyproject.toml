@@ -35,6 +35,7 @@ Homepage = "https://github.com/RoboCoachTechnologies/GPT-Synthesizer"
 
 [project.scripts]
 gpt-synthesizer = "gpt_synthesizer.main:main"
+gpt-synthesizer-streamlit = "gpt_synthesizer.app:main"
 
 [tool.setuptools]
 packages = ["gpt_synthesizer"]
