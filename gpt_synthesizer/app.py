@@ -117,7 +117,13 @@ def main(verbose = False):
     ################################################# END #########################################################
     if 'init_llm_bool' not in st.session_state.keys():
         st.session_state['init_llm_bool'] = True
-        st.session_state['llm'] = llm_init()
+        if model_choice == model_options[0]:
+            st.session_state['llm'] = llm_init() 
+        elif model_choice == model_options[1]:
+            st.session_state['llm'] = llm_init(model_name="gpt-4",
+                                               temperature=0.2,
+                                               max_tokens=4000,
+                                               model_kwargs={'frequency_penalty':0.2, 'presence_penalty':0})
 
     llm = st.session_state['llm']
 
