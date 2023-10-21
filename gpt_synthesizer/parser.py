@@ -34,7 +34,8 @@ def extend_comp_list(comp_list, add_msg):
 def remove_comp_list(comp_list, rm_msg):
     rm_list = re.findall(r"'(.*?)'", rm_msg, re.DOTALL)
     for rm_comp in rm_list:
-        del comp_list[rm_comp]
+        if rm_comp in comp_list:
+            del comp_list[rm_comp]
     return comp_list
 
 
