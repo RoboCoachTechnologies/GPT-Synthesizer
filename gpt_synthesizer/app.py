@@ -21,7 +21,7 @@ model_options = [':rainbow[GPT-3.5]', 'GPT-4']
 def main(verbose = False):
     st.set_page_config(page_title="GPT Synthesizer", initial_sidebar_state='auto', menu_items=None)
     st.title("GPT Synthesizer")
-    st.caption('Generate your code base on your task description and programming language!')
+    st.caption('Generate your code based on your task description and programming language!')
     print_bot("Hey there, I'm GPT Synthesizer, your code generation assistant, ready to realize your next dream project?!"+ui.WELCOME_MSG)
 
     INITIAL_MESSAGE = [
