@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gpt-synthesizer"
-version = "0.0.3"
+version = "0.0.4"
 description = "Collaboratively build an entire codebase for any project with the help of an AI"
 readme = "README.md"
 authors = [{ name = "RoboCoach Technologies", email = "robocoachtechnologies@gmail.com" }]
