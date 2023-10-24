@@ -67,7 +67,7 @@ GPT Synthesizer will be actively maintained as an open-source project. We welcom
 
 Here is a (non-exhaustive) list of our future plans for GPT Synthesizer:
 
-- An additional step in code generation that ensures creating a main/entrypoint. (-> already implemented for Python language)
+- An additional step in code generation that ensures creating a main/entrypoint. This feature has already been implemented for the Python language.
 - Creating setup instructions based on the programming language, e.g. `CMakelists.txt` for C++ and `setup.py`+`requirements.txt` for Python.
 - Adding benchmarks and testing scripts.
 
