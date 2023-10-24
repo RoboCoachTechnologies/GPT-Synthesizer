@@ -29,29 +29,21 @@ GPT Synthesizer is easy to use. It provides you with an intuitive AI assistant i
 - [GPT-Synthesizer short demo: how to install](https://www.youtube.com/watch?v=D_kdzOUTe0E)
 - [GPT-Synthesizer short demo: how to add/remove components](https://www.youtube.com/watch?v=mOHWS83HfOU)
 
-
 GPT Synthesizer uses OpenAI's `gpt-3.5-turbo-16k` as the default LLM.
 
-- Setup your OpenAI API key: `export OPENAI_API_KEY=[your api key]`
-
-**Run Terminal**:
-
-- Start GPT Synthesizer by typing `gpt-synthesizer` in the terminal.
-- Briefly describe your programming task and the implementation language:
-  - `Programming task: *I want to implement an edge detection method from a live camera feed.*`
-  - `Programming language: *python*`
-- GPT Synthesizer will analyze your task and suggest a set of components needed for the implementation.
-  - You can add more components by listing them in quotation marks: `Components to be added: *Add 'component 1: what component 1 does', 'component 2: what component 2 does', and 'component 3: what component 3 does' to the list of components.*`
-  - You can remove any redundant component in a similar manner: `Components to be removed: *Remove 'component 1' and 'component 2' from the list of components.*`
-- After you are done with modifying the component list, GPT Synthesizer will start asking questions in order to find all the details needed for implementing each component.
-- When GPT Synthesizer learns about your specific requirements for each component, it will write the code for you!
-- You can find the implementation in the `workspace` directory.
-
-**Run Streamlit App**:
+**Streamlit App**:
 
 - Start GPT Synthesizer by typing `gpt-synthesizer-streamlit` in the terminal.
 - Input your OpenAI API key in the sidebar
 - Select the model you wish to use in the sidebar
+
+**Command Line Interface**:
+
+- Setup your OpenAI API key: `export OPENAI_API_KEY=[your api key]`
+- Start GPT Synthesizer by typing `gpt-synthesizer` in the terminal.
+
+**How it works**:
+
 - Briefly describe your programming task and the implementation language:
   - `Programming task: *I want to implement an edge detection method from a live camera feed.*`
   - `Programming language: *python*`
@@ -61,6 +53,7 @@ GPT Synthesizer uses OpenAI's `gpt-3.5-turbo-16k` as the default LLM.
 - After you are done with modifying the component list, GPT Synthesizer will start asking questions in order to find all the details needed for implementing each component.
 - When GPT Synthesizer learns about your specific requirements for each component, it will write the code for you!
 - You can find the implementation in the `workspace` directory. For transparency, the UI will put the path and the content of the `workspace` in the sidebar.
+
 
 ## Make your own GPT Synthesizer!
 
@@ -74,7 +67,7 @@ GPT Synthesizer will be actively maintained as an open-source project. We welcom
 
 Here is a (non-exhaustive) list of our future plans for GPT Synthesizer:
 
-- An additional step in code generation that ensures creating a main/entrypoint.
+- An additional step in code generation that ensures creating a main/entrypoint. (-> already implemented for Python language)
 - Creating setup instructions based on the programming language, e.g. `CMakelists.txt` for C++ and `setup.py`+`requirements.txt` for Python.
 - Adding benchmarks and testing scripts.
 
