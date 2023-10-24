@@ -23,12 +23,7 @@ Different users might prefer different levels of interactivity depending on thei
 
 ## Usage
 
-GPT Synthesizer is easy to use. It provides you with an intuitive AI assistant in your command-line interface. It also provides an intuitive user interface using Streamlit. Watch these demos to see how GPT Synthesizer works:
-- [GPT-Synthesizer Release v0.0.2 demo: a snake game](https://www.youtube.com/watch?v=zFJDQOtIFGA)
-- [GPT-Synthesizer Release v0.0.3 demo: a tic-tac-toe game](https://www.youtube.com/watch?v=_JdmzpXLyE0)
-- [GPT-Synthesizer short demo: how to install](https://www.youtube.com/watch?v=D_kdzOUTe0E)
-- [GPT-Synthesizer short demo: how to add/remove components](https://www.youtube.com/watch?v=mOHWS83HfOU)
-
+GPT Synthesizer is easy to use. It provides you with an intuitive AI assistant in your command-line interface. It also provides an intuitive user interface using Streamlit. 
 GPT Synthesizer uses OpenAI's `gpt-3.5-turbo-16k` as the default LLM.
 
 **Streamlit App**:
@@ -36,11 +31,20 @@ GPT Synthesizer uses OpenAI's `gpt-3.5-turbo-16k` as the default LLM.
 - Start GPT Synthesizer by typing `gpt-synthesizer-streamlit` in the terminal.
 - Input your OpenAI API key in the sidebar
 - Select the model you wish to use in the sidebar
+  
+Demo:
+- [GPT-Synthesizer Release v0.0.4 streamlit demo: calculator](https://www.youtube.com/watch?v=y0_PpXPWeV8)
 
 **Command Line Interface**:
 
 - Setup your OpenAI API key: `export OPENAI_API_KEY=[your api key]`
 - Start GPT Synthesizer by typing `gpt-synthesizer` in the terminal.
+
+Demos:
+- [GPT-Synthesizer Release v0.0.2 demo: a snake game](https://www.youtube.com/watch?v=zFJDQOtIFGA)
+- [GPT-Synthesizer Release v0.0.3 demo: a tic-tac-toe game](https://www.youtube.com/watch?v=_JdmzpXLyE0)
+- [GPT-Synthesizer short demo: how to install](https://www.youtube.com/watch?v=D_kdzOUTe0E)
+- [GPT-Synthesizer short demo: how to add/remove components](https://www.youtube.com/watch?v=mOHWS83HfOU)
 
 **How it works**:
 
@@ -70,6 +74,10 @@ Here is a (non-exhaustive) list of our future plans for GPT Synthesizer:
 - An additional step in code generation that ensures creating a main/entrypoint. This feature has already been implemented for the Python language.
 - Creating setup instructions based on the programming language, e.g. `CMakelists.txt` for C++ and `setup.py`+`requirements.txt` for Python.
 - Adding benchmarks and testing scripts.
+
+## Additional documentations & articles
+
+[Looking inside GPT-Synthesizer and the idea of LLM-based code generation](https://medium.com/@saeedshamshiri_94060/looking-inside-gpt-synthesizer-and-the-idea-of-llm-based-code-generation-ff776b9e902f) 
 
 ## Contact
 
