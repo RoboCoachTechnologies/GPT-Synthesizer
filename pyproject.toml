@@ -21,7 +21,8 @@ classifiers = [
 ]
 keywords = ["Large Language Models", "AI-assisted Code Generation"]
 dependencies = [
-    "langchain[openai]"
+    "langchain[openai]",
+    "streamlit"
 ]
 requires-python = ">=3.8"
 
@@ -34,6 +35,7 @@ Homepage = "https://github.com/RoboCoachTechnologies/GPT-Synthesizer"
 
 [project.scripts]
 gpt-synthesizer = "gpt_synthesizer.main:main"
+gpt-synthesizer-streamlit = "gpt_synthesizer.run_app:main"
 
 [tool.setuptools]
 packages = ["gpt_synthesizer"]
