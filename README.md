@@ -35,6 +35,8 @@ GPT Synthesizer uses OpenAI's `gpt-3.5-turbo-16k` as the default LLM.
 Demo:
 - [GPT-Synthesizer Release v0.0.4 streamlit demo: calculator](https://www.youtube.com/watch?v=y0_PpXPWeV8)
 
+![Streamlit GUI](GUI.png)
+
 **Command Line Interface**:
 
 - Setup your OpenAI API key: `export OPENAI_API_KEY=[your api key]`
